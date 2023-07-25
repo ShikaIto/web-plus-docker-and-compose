@@ -12,6 +12,6 @@ async function bootstrap() {
 
   app.useLogger(app.get(WINSTON_MODULE_NEST_PROVIDER));
 
-  await app.listen(3001);
+  await app.listen(4000);
 }
 bootstrap();
