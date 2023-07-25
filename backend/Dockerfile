@@ -1,14 +1,14 @@
 FROM node:16-alpine as build
 WORKDIR /app
 COPY ./package*.json ./
-RUN npm i
+RUN npm ci
 COPY . .
 RUN npm run build
 
 FROM node:16-alpine as production
 WORKDIR /app
 COPY ./package*.json ./
-RUN npm i --omit=dev && npm i pm2 -g
+RUN npm ci --omit=dev && npm i pm2 -g
 COPY --from=build /app/dist ./dist
 COPY ./ecosystem.config.js .
 EXPOSE 4000
