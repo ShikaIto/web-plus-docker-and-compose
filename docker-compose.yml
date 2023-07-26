@@ -4,9 +4,9 @@ services:
     image: postgres:12-alpine
     env_file:
       - .env
-    container_name: kpd-database
+    container_name: postgres
     volumes:
-      - database:/var/lib/postgresql/data
+      - database:/data/postgres
     networks:
       - backend-network
     ports:
