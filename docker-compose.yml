@@ -4,7 +4,7 @@ services:
     image: postgres:12-alpine
     env_file:
       - .env
-    container_name: postgres
+    container_name: localhost
     volumes:
       - database:/data/postgres
     networks:

@@ -7,7 +7,7 @@ import { WishEntity } from 'src/wishes/entities/wish.entity';
 import { WishListEntity } from 'src/wishLists/entities/wishList.entity';
 import { UserModule } from 'src/users/users.module';
 import { AuthModule } from 'src/auth/auth.module';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { WishModule } from 'src/wishes/wishes.module';
 import { WishListModule } from 'src/wishLists/wishLists.module';
 import { WinstonModule } from 'nest-winston';
@@ -32,11 +32,11 @@ import { OfferModule } from 'src/offers/offers.module';
     ConfigModule.forRoot({ isGlobal: true }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: new ConfigService().get<string>('POSTGRES_HOST'),
-      port: Number(new ConfigService().get<string>('POSTGRES_PORT')),
-      username: new ConfigService().get<string>('POSTGRES_USER'),
-      password: new ConfigService().get<string>('POSTGRES_PASSWORD'),
-      database: new ConfigService().get<string>('POSTGRES_DB'),
+      host: process.env.POSTGRES_HOST,
+      port: Number(process.env.POSTGRES_PORT),
+      username: process.env.POSTGRES_USER,
+      password: process.env.POSTGRES_PASSWORD,
+      database: process.env.POSTGRES_DB,
       entities: [OfferEntity, UserEntity, WishEntity, WishListEntity],
       synchronize: true,
     }),
