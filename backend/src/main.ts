@@ -5,7 +5,7 @@ import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
-    cors: { origin: 'http://localhost:3000' },
+    cors: { origin: 'https://shika.project.nomoredomains.xyz/' },
   });
 
   app.useGlobalPipes(new ValidationPipe({ transform: true }));
